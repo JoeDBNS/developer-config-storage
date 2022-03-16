@@ -21,3 +21,14 @@ Registry edits that fix org default rules to allow for better software developme
 > ### IncognitoChromeEnabled.reg
 >
 > Allow Chrome to open in Incognito mode.
+
+&nbsp;
+
+## VS Code
+Items relating to VS Code setup or config.
+
+---
+
+> ### settings.json
+>
+> File containing all settings changes from stock VS Code for my working environment. File to overwrite is found here: **%APPDATA%\Code\User\settings.json**

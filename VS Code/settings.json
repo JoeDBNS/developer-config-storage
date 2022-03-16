@@ -1,0 +1,10 @@
+{
+    "workbench.startupEditor": "none",
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "git.enableSmartCommit": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "editor.accessibilitySupport": "off",
+    "window.zoomLevel": -1,
+    "diffEditor.ignoreTrimWhitespace": false
+}
