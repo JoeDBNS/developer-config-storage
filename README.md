@@ -1,10 +1,8 @@
 # work-comp-reg-edits
 
+
+## Registy Changes
 Registry edits that fix org default rules to allow for better software development.
-
-&nbsp;
-
-## File Details
 
 ---
 
