@@ -5,6 +5,8 @@
     "git.enableSmartCommit": true,
     "liveServer.settings.donotShowInfoMsg": true,
     "editor.accessibilitySupport": "off",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.renderWhitespace": "trailing",
     "window.zoomLevel": -1,
-    "diffEditor.ignoreTrimWhitespace": false
+    "files.trimTrailingWhitespace": true,
 }
