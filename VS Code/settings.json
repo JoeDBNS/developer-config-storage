@@ -6,7 +6,9 @@
     "liveServer.settings.donotShowInfoMsg": true,
     "editor.accessibilitySupport": "off",
     "diffEditor.ignoreTrimWhitespace": false,
+    "editor.unicodeHighlight.invisibleCharacters": true,
     "editor.renderWhitespace": "trailing",
     "window.zoomLevel": -1,
+    "workbench.colorTheme": "Default Dark+",
     "files.trimTrailingWhitespace": true,
 }
