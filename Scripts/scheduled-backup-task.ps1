@@ -1,40 +1,48 @@
 
-# ----- SEARCH -----
+# ----- NOTES -----
 
-# Get-ScheduledTask
-
-# Get-ScheduledTask | Where-Object state -eq 'Running'
-
-# Get-ScheduledTask -TaskName 'windows*'
-
-# Get-ScheduledTask -TaskPath '\Microsoft*'
+# Open PowerShell as Admin
+# powershell.exe -noexit -ExecutionPolicy Bypass -File '___path to file____\scheduled-backup-task.ps1'
 
 
-# ----- Create App File -----
+# ----- INPUTS & VARIABLES -----
 
-$Path = "c:\temp\test1.txt"
-# Create the folder is the path doesn't exist
-If (-not(test-path -Path $Path)) {
-    New-Item -Path $Path -ItemType File
-}
+[string] $SourcePath = Read-Host "Enter Full Path Of Folder to Backup"
+[string] $SourceName = $SourcePath.Split("\") | Select-Object -Last 1
 
-New-Item -Path "c:\temp" -Name "test01.txt" -ItemType File -Force
+[string] $BackupsPath = "$env:USERPROFILE\Backups"
+[string] $TargetPath = "$BackupsPath\$SourceName\$UnixTimeStamp"
 
-# Create a file and set the content
-Set-Content -Path c:\temp\newFile.txt -Value "New file with Content"
-# Or use New-Item to create the file with content
-New-Item -Path c:\temp\ -name "newFile.txt" -Value "New file with Content"
+[string] $TaskScriptsPath = "$env:USERPROFILE\ScheduledTaskScripts\"
+[string] $TaskScriptsFileName = "FolderBackupScript-$SourceName.ps1"
+
+
+# ----- Backup Code -----
+
+$BackupCodeAsText = @"
+    [int] `$UnixTimeStamp = (Get-Date -UFormat %s -Millisecond 0)
+    [string] `$TargetPath = "$BackupsPath\$SourceName\`$UnixTimeStamp"
+
+    New-Item -Path "`$TargetPath" -ItemType Directory
+    Copy-item -Force -Recurse "$SourcePath" -Destination "`$TargetPath"
+"@
+
+
+# ----- Create Backup Script File -----
+
+New-Item -Force -ItemType File `
+    -Path $TaskScriptsPath `
+    -Name $TaskScriptsFileName `
+    -Value $BackupCodeAsText
 
 
 # ----- Create Task -----
 
+# Requires execute as Admin to set principal below
+$Actions = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-ExecutionPolicy Bypass -File `"$TaskScriptsPath$TaskScriptsFileName`""
+$Trigger = New-ScheduledTaskTrigger -Daily -At "12:00 PM"
+$Principal = New-ScheduledTaskPrincipal -UserID "NT AUTHORITY\SYSTEM" -LogonType ServiceAccount -RunLevel Highest
+$Settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -WakeToRun -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
+$Task = New-ScheduledTask -Action $Actions -Trigger $Trigger -Principal $Principal -Settings $Settings
 
-$action = New-ScheduledTaskAction -Execute 'app-path'
-
-
-
-
-# [string]$sourceDirectory = "C:\Temp\Random_Folder"
-
-# [string]$destinationDirectory = "C:\Users\anyuser\Documents"
-# Copy-item -Force -Recurse -Verbose $sourceDirectory -Destination $destinationDirectory
+Register-ScheduledTask "Personal\FolderBackupScript-$SourceName" -InputObject $Task
