@@ -1,7 +1,7 @@
 # developer-config-storage
 
 
-## Registy Changes
+## Registry Changes
 Registry edits that fix org default rules to allow for better software development.
 
 ---
