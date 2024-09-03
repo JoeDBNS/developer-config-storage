@@ -1,14 +1,16 @@
 {
-    "workbench.startupEditor": "none",
-    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "security.workspace.trust.untrustedFiles": "open",
     "editor.multiCursorModifier": "ctrlCmd",
-    "git.enableSmartCommit": true,
-    "liveServer.settings.donotShowInfoMsg": true,
     "editor.accessibilitySupport": "off",
-    "diffEditor.ignoreTrimWhitespace": false,
     "editor.unicodeHighlight.invisibleCharacters": true,
     "editor.renderWhitespace": "trailing",
-    "window.zoomLevel": -1,
+    "editor.hover.enabled": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "git.enableSmartCommit": true,
+    "liveServer.settings.donotShowInfoMsg": true,
     "workbench.colorTheme": "Default Dark+",
-    "files.trimTrailingWhitespace": true,
+    "workbench.startupEditor": "none",
+    "window.zoomLevel": -1,
+    "files.trimTrailingWhitespace": true
 }
