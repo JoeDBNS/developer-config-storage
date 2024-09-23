@@ -12,5 +12,6 @@
     "workbench.colorTheme": "Default Dark+",
     "workbench.startupEditor": "none",
     "window.zoomLevel": -1,
-    "files.trimTrailingWhitespace": true
+    "files.trimTrailingWhitespace": true,
+    "editor.detectIndentation": false
 }
