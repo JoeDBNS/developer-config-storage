@@ -4,7 +4,7 @@
     "editor.accessibilitySupport": "off",
     "editor.unicodeHighlight.invisibleCharacters": true,
     "editor.renderWhitespace": "trailing",
-    "editor.hover.enabled": false,
+    "editor.hover.enabled": false, // Breaks color picker :(
     "diffEditor.ignoreTrimWhitespace": false,
     "terminal.integrated.defaultProfile.windows": "Git Bash",
     "git.enableSmartCommit": true,
