@@ -32,3 +32,7 @@ Items relating to VS Code setup or config.
 > ### settings.json
 >
 > File containing all settings changes from stock VS Code for my working environment. File to overwrite is found here: **%APPDATA%\Code\User\settings.json**
+
+> ### extensions.json
+>
+> File listing all installed extensions is found here: **%USERPROFILE%\.vscode\extensions\extensions.json**
