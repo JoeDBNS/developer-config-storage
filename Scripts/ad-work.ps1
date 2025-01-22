@@ -3,6 +3,7 @@ Get-WindowsCapability -Online | Where-Object { $_.Name -like "Rsat.ActiveDirecto
 
 
 # Search for User by SOM name
+Get-ADUser -Filter 'SamAccountName -like "*__username__*"' -Properties *
 Get-ADUser -Filter 'SamAccountName -like "*__username__*"' -Properties memberof,Created
 Get-ADUser -Filter 'SamAccountName -like "*__username__*"' -Properties memberof,Created | Select-Object Enabled,SamAccountName,Created,DistinguishedName
 
